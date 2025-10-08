@@ -1,10 +1,10 @@
 # NowNews
 
 <p align="center">
-  <img src="logo.png" alt="logo" width="200"/>
+  <img src="logo.png" alt="logo" width="200"/><br>
+  <b>NowNews (formerly eco.news)</b><br>
+  is a bot for quickly creating news in your <i><b>Telegram</b></i> channel!
 </p>
-
-NowNews (formerly eco.news) is a bot for quickly creating news in your ***Telegram*** channel!
 
 # Features
 - Login with **username** and **password**
