@@ -1,5 +1,9 @@
 # NowNews
 
+<p align="center">
+  <img src="logo.png" alt="logo" width="200"/>
+</p>
+
 NowNews (formerly eco.news) is a bot for quickly creating news in your ***Telegram*** channel!
 
 # Features
