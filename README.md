@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="logo" width="200"/><br>
+  <img src="logo.png" alt="logo"/><br>
   <b>NowNews (formerly eco.news)</b><br>
   is a bot for quickly creating news in your <i><b>Telegram</b></i> channel!
 </p>
