@@ -1,5 +1,3 @@
-# NowNews
-
 <p align="center">
   <img src="logo.png" alt="logo" width="200"/><br>
   <b>NowNews (formerly eco.news)</b><br>
