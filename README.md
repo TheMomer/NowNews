@@ -1,15 +1,15 @@
-<p align="center">
-  <b>NowNews (formerly eco.news)</b><br>
-  is a bot for quickly creating news in your <i><b>Telegram</b></i> channel!
-</p>
+# NowNews
 
-# Features
+**NowNews** (formerly eco.news) is a bot for quickly creating news in your ***Telegram*** channel!
+
+## Features
+
 - Login with **username** and **password**
 - **Whitelist** of users by **ID**
 - **sha256** encryption for **password**
 - Customization
 
-# How to launch
+## How to launch
 
 1. Clone the repository to the location you want:
 ```bash
