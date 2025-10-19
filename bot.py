@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, F
 from aiogram.enums import ParseMode
 from aiogram.types import (
-    Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton,
+    Message,
     InputMediaPhoto, InputMediaVideo, InputMediaDocument, InputMediaAudio, InputMediaAnimation
 )
 from aiogram.fsm.state import StatesGroup, State
@@ -26,6 +26,7 @@ CHANNEL_LINK = os.getenv("CHANNEL_LINK", "")
 CHANNEL_NAME = os.getenv("CHANNEL_NAME", "")
 SEPARATOR = os.getenv("SEPARATOR", " | ")
 SHOW_AUTHOR = os.getenv("SHOW_AUTHOR", "true")
+SUBSCRIBE_BUTTON_TEXT = os.getenv("SUBSCRIBE_BUTTON_TEXT", "Subscribe")
 
 MEDIA_GROUP_TIMEOUT = 1.5
 authenticated_users = set()
@@ -80,14 +81,12 @@ async def cancel(message: Message, state: FSMContext):
     await state.clear()
     await message.reply("Authentication canceled.")
 
-async def send_media_group(user_id: int, media_group_id: str):
+async def send_media_group(media_group_id: str):
     group = media_groups.pop(media_group_id, [])
     if not group:
         return
 
-    data = await state.get_data()
-
-    suffix = f'\n\n{CHANNEL_NAME} {SEPARATOR} <a href="{CHANNEL_LINK}">Subscribe</a>\n\n#news'
+    suffix = f'\n\n{CHANNEL_NAME} {SEPARATOR} <a href="{CHANNEL_LINK}">{SUBSCRIBE_BUTTON_TEXT}</a>\n\n#news'
 
     media = []
     for i, msg in enumerate(group):
@@ -109,7 +108,7 @@ async def send_media_group(user_id: int, media_group_id: str):
         except Exception as e:
             logging.error(f"Error sending media group: {e}")
 
-async def delayed_send(user_id: int, media_group_id: str):
+async def delayed_send(user_id: int, media_group_id: str, state):
     await asyncio.sleep(MEDIA_GROUP_TIMEOUT)
     await send_media_group(user_id, media_group_id, state)
 
@@ -119,10 +118,9 @@ async def forward(message: Message, state: FSMContext):
     if user_id not in authenticated_users:
         return await message.reply("First, log in via /start")
 
-    data = await state.get_data()
     sender_name = message.from_user.full_name
 
-    suffix = f'\n\n{CHANNEL_NAME} {SEPARATOR} <a href="{CHANNEL_LINK}">Subscribe</a>\n\n#news'
+    suffix = f'\n\n{CHANNEL_NAME} {SEPARATOR} <a href="{CHANNEL_LINK}">{SUBSCRIBE_BUTTON_TEXT}</a>\n\n#news'
     if SHOW_AUTHOR == "true":
         suffix += f'\n\nby <b>{sender_name}</b>'
 
