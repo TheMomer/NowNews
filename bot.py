@@ -86,7 +86,7 @@ async def send_media_group(media_group_id: str):
     if not group:
         return
 
-    suffix = f'\n\n{CHANNEL_NAME} {SEPARATOR} <a href="{CHANNEL_LINK}">{SUBSCRIBE_BUTTON_TEXT}</a>\n\n#news'
+    suffix = f'\n\n{CHANNEL_NAME}{SEPARATOR}<a href="{CHANNEL_LINK}">{SUBSCRIBE_BUTTON_TEXT}</a>\n\n#news'
 
     media = []
     for i, msg in enumerate(group):
@@ -120,7 +120,7 @@ async def forward(message: Message, state: FSMContext):
 
     sender_name = message.from_user.full_name
 
-    suffix = f'\n\n{CHANNEL_NAME} {SEPARATOR} <a href="{CHANNEL_LINK}">{SUBSCRIBE_BUTTON_TEXT}</a>\n\n#news'
+    suffix = f'\n\n{CHANNEL_NAME}{SEPARATOR}<a href="{CHANNEL_LINK}">{SUBSCRIBE_BUTTON_TEXT}</a>\n\n#news'
     if SHOW_AUTHOR == "true":
         suffix += f'\n\nby <b>{sender_name}</b>'
 
